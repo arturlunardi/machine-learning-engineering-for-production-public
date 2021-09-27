@@ -16,6 +16,10 @@ services:
     image: mlepc4w2-ugl:with-batch
     links:
       - locust
+  batch-512:
+    image: mlepc4w2-ugl:with-batch
+    links:
+      - locust
   locust:
     image: locustio/locust
     ports:

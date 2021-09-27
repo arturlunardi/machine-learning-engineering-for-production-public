@@ -27,6 +27,13 @@ class LoadTest(HttpUser):
         )
 
     @task
+    def predict_batch_512(self):
+        request_body = {"batches": [[1.0 for i in range(13)] for i in range(512)]}
+        self.client.post(
+            "http://batch-512:80/predict", json=request_body, name="batch-512"
+        )
+
+    @task
     def predict_no_batch(self):
         request_body = {
             "alcohol": 1.0,
